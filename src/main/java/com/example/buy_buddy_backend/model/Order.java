@@ -23,16 +23,13 @@ public class Order {
     private Long id;
 
     private LocalDateTime orderDate;
+    private Double totalprice;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToMany
-    @JoinTable(
-        name = "order_product",
-        joinColumns = @JoinColumn(name = "order_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
+    @JoinTable(name = "order_product", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products = new ArrayList<>();
 }
